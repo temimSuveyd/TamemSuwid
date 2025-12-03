@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamim Suid | Mobile & Desktop App Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Ana Renkler */
+            --primary-blue: #2563EB;
+            --dark-blue: #1E40AF;
+            --light-blue: #60A5FA;
+
+            /* Nötr Renkler */
+            --white: #FFFFFF;
+            --light-gray: #F8FAFC;
+            --dark-text: #1E293B;
+            --medium-text: #64748B;
+            --border-gray: #E2E8F0;
+
+            /* Aksan Renkleri */
+            --success-green: #10B981;
+            --error-red: #EF4444;
+            --warning-yellow: #F59E0B;
+
+            /* Gölgeler */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--light-gray);
+            color: var(--dark-text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        [dir="rtl"] body {
+            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* Header Navigation */
+        .header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--border-gray);
+            z-index: 100;
+            padding: 16px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--medium-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-blue);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            border: 1px solid var(--border-gray);
+            background: var(--white);
+            color: var(--medium-text);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-text);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 128px 32px 64px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark-text);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .hero .description {
+            font-size: 1.125rem;
+            color: var(--medium-text);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-btn:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-btn .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        .hero-profile {
+            margin-bottom: 32px;
+        }
+
+        .hero-profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Technologies Section */
+        .technologies {
+            padding: 64px 32px;
+            background: var(--white);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 64px;
+            color: var(--dark-text);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .tech-card {
+            background: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+        }
+
+        .tech-card h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+        }
+
+        .tech-icons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .tech-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .tech-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover .tech-icon {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tech-card:hover .tech-icon img {
+            transform: scale(1.1);
+        }
+
+        .tech-card:hover .tech-icon.flutter,
+        .tech-card:hover .tech-icon.dart,
+        .tech-card:hover .tech-icon.firebase,
+        .tech-card:hover .tech-icon.supabase,
+        .tech-card:hover .tech-icon.api,
+        .tech-card:hover .tech-icon.getx,
+        .tech-card:hover .tech-icon.cubit,
+        .tech-card:hover .tech-icon.bloc,
+        .tech-card:hover .tech-icon.mvc,
+        .tech-card:hover .tech-icon.mvvm,
+        .tech-card:hover .tech-icon.clean {
+            background: var(--white);
+            border: 2px solid var(--primary-blue);
+        }
+
+        /* Teknoloji logoları için özel stiller */
+        .tech-icon.flutter {
+            background: linear-gradient(45deg, #02569B, #0175C2);
+        }
+
+        .tech-icon.dart {
+            background: linear-gradient(45deg, #0175C2, #13B9FD);
+        }
+
+        .tech-icon.firebase {
+            background: linear-gradient(45deg, #FFA000, #FF6F00);
+        }
+
+        .tech-icon.supabase {
+            background: linear-gradient(45deg, #3ECF8E, #3ECF8E);
+        }
+
+        .tech-icon.api {
+            background: linear-gradient(45deg, #6366F1, #8B5CF6);
+        }
+
+        .tech-icon.getx {
+            background: linear-gradient(45deg, #9C27B0, #673AB7);
+        }
+
+        .tech-icon.cubit {
+            background: linear-gradient(45deg, #2196F3, #03DAC6);
+        }
+
+        .tech-icon.bloc {
+            background: linear-gradient(45deg, #2196F3, #03DAC6);
+        }
+
+        .tech-icon.mvc {
+            background: linear-gradient(45deg, #FF5722, #FF9800);
+        }
+
+        .tech-icon.mvvm {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+        }
+
+        .tech-icon.clean {
+            background: linear-gradient(45deg, #607D8B, #9E9E9E);
+        }
+
+        .tech-label {
+            font-size: 0.875rem;
+            color: var(--medium-text);
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 64px 32px;
+            background: var(--light-gray);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .project-image.has-image {
+            background-image: none;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-card:hover .project-image {
+            transform: none;
+        }
+
+        .project-content {
+            padding: 24px;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-text);
+        }
+
+        .project-client {
+            font-size: 0.875rem;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .project-description {
+            font-size: 0.875rem;
+            color: var(--medium-text);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: var(--light-gray);
+            color: var(--primary-blue);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border-gray);
+        }
+
+        .view-details-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--primary-blue);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            margin-top: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .view-details-btn:hover {
+            color: var(--dark-blue);
+        }
+
+        .view-details-btn .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .view-details-btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--white);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .modal-header {
+            position: relative;
+            padding: 24px;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--medium-text);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--light-gray);
+            color: var(--dark-text);
+        }
+
+        .modal-body {
+            padding: 32px;
+        }
+
+        .modal-project-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 32px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .modal-project-image.has-image {
+            background: var(--white);
+            padding: 20px;
+        }
+
+        .modal-project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .modal-project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), rgba(96, 165, 250, 0.1));
+            z-index: 1;
+        }
+
+        .modal-project-image.has-image::before {
+            display: none;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-text);
+        }
+
+        .modal-client {
+            font-size: 1rem;
+            color: var(--primary-blue);
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .problem-box,
+        .solution-box {
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid;
+        }
+
+        .problem-box {
+            background: #FEF2F2;
+            border-left-color: var(--error-red);
+        }
+
+        .solution-box {
+            background: #F0FDF4;
+            border-left-color: var(--success-green);
+        }
+
+        .problem-title,
+        .solution-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .problem-title {
+            color: var(--error-red);
+        }
+
+        .solution-title {
+            color: var(--success-green);
+        }
+
+        .features-section {
+            margin-bottom: 32px;
+        }
+
+        .features-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.875rem;
+            color: var(--dark-text);
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: var(--success-green);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .project-overview-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            background: var(--light-gray);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .overview-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .overview-text {
+            font-size: 0.95rem;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .modal-tech-section {
+            margin-top: 32px;
+        }
+
+        .modal-tech-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .modal-tech-tag {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 64px 32px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark-text);
+        }
+
+        .contact-subtitle {
+            font-size: 1.125rem;
+            color: var(--medium-text);
+            margin-bottom: 32px;
+        }
+
+        .contact-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--light-gray);
+            padding: 16px 24px;
+            border-radius: 12px;
+            border: 2px solid var(--border-gray);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+
+        .contact-info:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info::before {
+            content: "📧";
+            font-size: 1.25rem;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 32px;
+            background: var(--dark-text);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            margin-bottom: 8px;
+        }
+
+        .footer-subtext {
+            font-size: 0.75rem;
+            color: var(--medium-text);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding: 96px 16px 48px;
+            }
+
+            .section-container {
+                padding: 0 16px;
+            }
+
+            .technologies,
+            .projects,
+            .contact {
+                padding: 48px 16px;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .problem-solution-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .modal-body {
+                padding: 24px;
+            }
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .hero-btn .arrow {
+            transform: scaleX(-1);
+        }
+
+        [dir="rtl"] .hero-btn:hover .arrow {
+            transform: scaleX(-1) translateX(4px);
+        }
+
+        [dir="rtl"] .view-details-btn .arrow {
+            transform: scaleX(-1);
+        }
+
+        [dir="rtl"] .view-details-btn:hover .arrow {
+            transform: scaleX(-1) translateX(4px);
+        }
+
+        [dir="rtl"] .features-list li::before {
+            margin-left: 12px;
+            margin-right: 0;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header class="header-nav">
+        <div class="nav-container">
+            <div class="logo" data-en="Tamim Suid | Mobile & Desktop App Developer"
+                data-ar="تميم سويد | مطور تطبيقات الهاتف و سطح المكتب">
+                Tamim Suid | Mobile & Desktop App Developer
+            </div>
+
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="#projects" class="nav-link" data-en="Projects" data-ar="المشاريع">Projects</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-ar="اتصل">Contact</a>
+            </nav>
+
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">AR</button>
+            </div>
+
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container fade-in">
+            <h1 data-en="Hi, I'm Tamim Suid" data-ar="مرحباً، أنا تميم سويد">Hi, I'm Tamim Suid</h1>
+            <div class="subtitle" data-en="Mobile & Desktop App Developer" data-ar="مطور تطبيقات الهاتف و سطح المكتب">
+                Mobile & Desktop App Developer</div>
+            <p class="description"
+                data-en="Building efficient mobile and desktop applications with modern technologies and clean architecture"
+                data-ar="بناء تطبيقات الهاتف المحمول وسطح المكتب الفعالة بالتقنيات الحديثة والهندسة المعمارية النظيفة">
+                Building efficient mobile and desktop applications with modern technologies and clean architecture
+            </p>
+            <a href="#projects" class="hero-btn">
+                <span data-en="View Projects" data-ar="عرض المشاريع">View Projects</span>
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="technologies">
+        <div class="section-container">
+            <h2 class="section-title fade-in" data-en="Technologies" data-ar="التقنيات">Technologies</h2>
+            <div class="tech-grid">
+                <div class="tech-card fade-in">
+                    <h3 data-en="Mobile & Desktop Development" data-ar="تطوير الهاتف المحمول وسطح المكتب">Mobile &
+                        Desktop Development</h3>
+                    <div class="tech-icons">
+                        <div class="tech-icon flutter" title="Flutter">
+                            <span style="color: white; font-weight: bold; font-size: 14px;">Flutter</span>
+                        </div>
+                        <div class="tech-icon dart" title="Dart">
+                            <span style="color: white; font-weight: bold; font-size: 16px;">Dart</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <h3 data-en="Backend & Cloud" data-ar="الخادم والسحابة">Backend & Cloud</h3>
+                    <div class="tech-icons">
+                        <div class="tech-icon firebase" title="Firebase">
+                            <span style="color: white; font-weight: bold; font-size: 14px;">Firebase</span>
+                        </div>
+                        <div class="tech-icon supabase" title="Supabase">
+                            <span style="color: white; font-weight: bold; font-size: 13px;">Supabase</span>
+                        </div>
+                        <div class="tech-icon api" title="API">
+                            <span style="color: white; font-weight: bold; font-size: 16px;">API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <h3 data-en="State Management" data-ar="إدارة الحالة">State Management</h3>
+                    <div class="tech-icons">
+                        <div class="tech-icon getx" title="GetX">
+                            <span style="color: white; font-weight: bold; font-size: 16px;">GetX</span>
+                        </div>
+                        <div class="tech-icon cubit" title="Cubit">
+                            <span style="color: white; font-weight: bold; font-size: 14px;">Cubit</span>
+                        </div>
+                        <div class="tech-icon bloc" title="Bloc">
+                            <span style="color: white; font-weight: bold; font-size: 16px;">Bloc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-card fade-in">
+                    <h3 data-en="Architecture" data-ar="الهندسة المعمارية">Architecture</h3>
+                    <div class="tech-icons">
+                        <div class="tech-icon mvc" title="MVC">
+                            <span style="color: white; font-weight: bold; font-size: 16px;">MVC</span>
+                        </div>
+                        <div class="tech-icon mvvm" title="MVVM">
+                            <span style="color: white; font-weight: bold; font-size: 15px;">MVVM</span>
+                        </div>
+                        <div class="tech-icon clean" title="Clean Architecture">
+                            <span style="color: white; font-weight: bold; font-size: 12px;">Clean</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-container">
+            <h2 class="section-title fade-in" data-en="Featured Projects" data-ar="المشاريع المميزة">Featured Projects
+            </h2>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <h2 class="contact-title fade-in" data-en="Get in Touch" data-ar="تواصل معي">Get in Touch</h2>
+            <p class="contact-subtitle fade-in" data-en="Interested in working together?" data-ar="مهتم بالعمل معاً؟">
+                Interested in working together?</p>
+            <a href="mailto:suveydt@gmail.com" class="contact-info fade-in">
+                <strong>suveydt@gmail.com</strong>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text" data-en="© 2024 Tamim Suid. All rights reserved."
+            data-ar="© 2024 تميم سويد. جميع الحقوق محفوظة.">
+            © 2024 Tamim Suid. All rights reserved.
+        </div>
+        <div class="footer-subtext" data-en="Built with passion for mobile & desktop apps."
+            data-ar="مبني بشغف لتطبيقات الهاتف المحمول وسطح المكتب.">
+            Built with passion for mobile & desktop apps.
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-project-image" id="modalImage">📱</div>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-client" id="modalClient"></p>
+
+                <div class="problem-solution-grid">
+                    <div class="problem-box">
+                        <div class="problem-title" data-en="The Problem" data-ar="المشكلة">The Problem</div>
+                        <p id="modalProblem"></p>
+                    </div>
+                    <div class="solution-box">
+                        <div class="solution-title" data-en="The Solution" data-ar="الحل">The Solution</div>
+                        <p id="modalSolution"></p>
+                    </div>
+                </div>
+
+                <div class="features-section">
+                    <div class="features-title" data-en="Key Features" data-ar="الميزات الرئيسية">Key Features</div>
+                    <ul class="features-list" id="modalFeatures"></ul>
+                </div>
+
+                <div class="project-overview-section">
+                    <div class="overview-title" data-en="Project Overview" data-ar="نظرة عامة على المشروع">Project
+                        Overview</div>
+                    <p class="overview-text" id="modalOverview"></p>
+                </div>
+
+                <div class="modal-tech-section">
+                    <div class="modal-tech-title" data-en="Technologies" data-ar="التقنيات">Technologies</div>
+                    <div class="modal-tech-tags" id="modalTech"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global Variables
+        let currentLanguage = 'en';
+
+        // Project Data
+        const projects = [
+            {
+                id: "hospital",
+                title: {
+                    en: "Hospital Maintenance App",
+                    ar: "تطبيق إدارة أعطال المستشفى"
+                },
+                client: {
+                    en: "Jabir Al-Ahmad Hospital, Kuwait",
+                    ar: "مستشفى جابر الأحمد - الكويت"
+                },
+                description: {
+                    en: "Complete maintenance management system with automated workflow from fault reporting to resolution.",
+                    ar: "نظام إدارة صيانة متكامل مع تدفق عمل آلي من الإبلاغ عن الأعطال إلى الإصلاح."
+                },
+                problem: {
+                    en: "Chaotic fault reporting system and lack of follow-up on maintenance issues in the hospital.",
+                    ar: "فوضى في الإبلاغ عن الأعطال وعدم متابعتها في المستشفى."
+                },
+                solution: {
+                    en: "Organized workflow system from reporting to repair with automated assignment and real-time tracking.",
+                    ar: "نظام تدفق عمل منظم من الإبلاغ إلى الإصلاح مع التوجيه التلقائي والمتابعة المباشرة."
+                },
+                features: {
+                    en: [
+                        "Staff fault reporting via mobile app",
+                        "Automatic assignment to specialized engineers",
+                        "Real-time repair status tracking",
+                        "Comprehensive admin dashboard",
+                        "Push notifications for updates",
+                        "Detailed maintenance history"
+                    ],
+                    ar: [
+                        "إبلاغ الموظفين عن الأعطال عبر التطبيق",
+                        "توجيه تلقائي للمهندس المتخصص",
+                        "متابعة حية لحالة الإصلاح",
+                        "لوحة تحكم شاملة للمشرفين",
+                        "إشعارات فورية للتحديثات",
+                        "سجل مفصل لأعمال الصيانة"
+                    ]
+                },
+                technologies: ["Flutter", "GetX", "MVC", "Firebase", "FCM"],
+                icon: "🏥",
+                image: "images/hospital_app.jpeg"
+            },
+            {
+                id: "irad",
+                title: {
+                    en: "Irad Store Management System",
+                    ar: "تطبيق إراد - نظام إدارة المتاجر"
+                },
+                client: {
+                    en: "Suveyd Trading Co., Syria",
+                    ar: "شركة السويد للتجارة - سوريا"
+                },
+                description: {
+                    en: "Comprehensive business automation system covering all retail operations from sales to inventory management.",
+                    ar: "نظام متكامل يغطي جميع العمليات التجارية من المبيعات إلى إدارة المخزون."
+                },
+                problem: {
+                    en: "Manual management of sales, purchases, and inventory operations leading to inefficiency and errors.",
+                    ar: "إدارة يدوية للمبيعات والمشتريات والمخزون مما يؤدي إلى عدم الكفاءة والأخطاء."
+                },
+                solution: {
+                    en: "Integrated system covering all business operations with automated profit calculation and comprehensive reporting.",
+                    ar: "نظام متكامل يغطي جميع العمليات التجارية مع حساب أرباح تلقائي وتقارير شاملة."
+                },
+                features: {
+                    en: [
+                        "Sales & purchase invoices with automatic profit calculation",
+                        "Inventory management with stock alerts",
+                        "Comprehensive financial reports and analytics",
+                        "Customer and supplier debt management",
+                        "PDF invoice generation",
+                        "Multi-user access control"
+                    ],
+                    ar: [
+                        "فواتير بيع وشراء مع حساب أرباح تلقائي",
+                        "إدارة المخزون وتنبيهات النفاذ",
+                        "تقارير مالية شاملة وتحليلات",
+                        "إدارة ديون العملاء والموردين",
+                        "توليد فواتير PDF",
+                        "التحكم في الوصول متعدد المستخدمين"
+                    ]
+                },
+                technologies: ["Flutter", "GetX", "MVC", "Firebase", "PDF"],
+                icon: "🏪",
+                image: "images/erad_app.png"
+            },
+            {
+                id: "currency",
+                title: {
+                    en: "Live Value - Currency Converter",
+                    ar: "لايف فاليو - محول العملات"
+                },
+                client: {
+                    en: "Personal Project",
+                    ar: "مشروع شخصي"
+                },
+                description: {
+                    en: "Fast and reliable currency converter with real-time exchange rates for all global currencies.",
+                    ar: "محول عملات سريع وموثوق بأسعار صرف فورية لجميع العملات العالمية."
+                },
+                problem: {
+                    en: "Difficulty accessing updated and accurate exchange rates for international currencies quickly.",
+                    ar: "صعوبة الوصول لأسعار عملات محدثة ودقيقة للعملات الدولية بسرعة."
+                },
+                solution: {
+                    en: "Fast application for currency conversion with live rates and instant updates for all world currencies.",
+                    ar: "تطبيق سريع لتحويل العملات بأسعار مباشرة وتحديث فوري لجميع عملات العالم."
+                },
+                features: {
+                    en: [
+                        "Conversion between all global currencies",
+                        "Instant price updates from live APIs",
+                        "Quick search for currencies",
+                        "Simple and fast interface",
+                        "Offline mode with cached rates",
+                        "Historical exchange rate charts"
+                    ],
+                    ar: [
+                        "تحويل بين جميع العملات العالمية",
+                        "تحديث فوري للأسعار من واجهات مباشرة",
+                        "بحث سريع عن العملات",
+                        "واجهة بسيطة وسريعة",
+                        "وضع عدم الاتصال مع أسعار محفوظة",
+                        "رسوم بيانية لأسعار الصرف التاريخية"
+                    ]
+                },
+                technologies: ["Flutter", "Clean Architecture", "Cubit", "API"],
+                icon: "💱",
+                image: "images/live_value_app.jpeg"
+            },
+            {
+                id: "neighborhood",
+                title: {
+                    en: "Neighborhood Community App",
+                    ar: "تطبيق مجتمع الحي"
+                },
+                client: {
+                    en: "Community Project",
+                    ar: "مشروع مجتمعي"
+                },
+                description: {
+                    en: "Social platform for neighborhood communities to share activities and organize local events.",
+                    ar: "منصة اجتماعية لمجتمعات الأحياء لمشاركة الأنشطة وتنظيم الفعاليات المحلية."
+                },
+                problem: {
+                    en: "Lack of communication between neighborhood residents and difficulty organizing community activities.",
+                    ar: "عدم التواصل بين سكان الحي وصعوبة تنظيم الأنشطة المجتمعية."
+                },
+                solution: {
+                    en: "Social platform for community activities and events with team creation and notification system.",
+                    ar: "منصة اجتماعية للأنشطة والفعاليات المجتمعية مع إنشاء فرق ونظام إشعارات."
+                },
+                features: {
+                    en: [
+                        "Daily activity sharing among residents",
+                        "Private team creation for specific activities",
+                        "Notification system for new posts",
+                        "Activity participant management",
+                        "Event scheduling and reminders",
+                        "Community photo sharing"
+                    ],
+                    ar: [
+                        "مشاركة الأنشطة اليومية بين السكان",
+                        "إنشاء فرق خاصة للأنشطة المحددة",
+                        "نظام إشعارات للمشاركات الجديدة",
+                        "إدارة المشاركين في الأنشطة",
+                        "جدولة الأحداث والتذكيرات",
+                        "مشاركة صور المجتمع"
+                    ]
+                },
+                technologies: ["Flutter", "Supabase", "GetX", "MVC", "Cloudinary"],
+                icon: "🏘️",
+                image: "images/Group 9.png"
+            },
+            {
+                id: "chati",
+                title: {
+                    en: "Chati Messaging App",
+                    ar: "تطبيق شاتي للدردشة"
+                },
+                client: {
+                    en: "Personal Project",
+                    ar: "مشروع شخصي"
+                },
+                description: {
+                    en: "High-performance instant messaging app with real-time features and multimedia sharing capabilities.",
+                    ar: "تطبيق مراسلة فورية عالي الأداء مع ميزات الوقت الفعلي وإمكانيات مشاركة الوسائط المتعددة."
+                },
+                problem: {
+                    en: "Need for a fast and reliable messaging application with modern features and attractive interface.",
+                    ar: "عدم وجود تطبيق دردشة سريع وموثوق بميزات حديثة وواجهة جذابة."
+                },
+                solution: {
+                    en: "High-performance instant messaging application with real-time communication and media sharing.",
+                    ar: "تطبيق مراسلة فورية عالي الأداء مع تواصل فوري ومشاركة الوسائط."
+                },
+                features: {
+                    en: [
+                        "Instant messaging between users",
+                        "Real-time push notifications",
+                        "Image and file sharing",
+                        "Attractive and clean user interface",
+                        "Message encryption for security",
+                        "Online/offline status indicators"
+                    ],
+                    ar: [
+                        "دردشة فورية بين المستخدمين",
+                        "إشعارات لحظية فورية",
+                        "مشاركة الصور والملفات",
+                        "واجهة مستخدم جذابة ونظيفة",
+                        "تشفير الرسائل للأمان",
+                        "مؤشرات الحالة متصل/غير متصل"
+                    ]
+                },
+                technologies: ["Flutter", "Firebase", "GetX", "MVC"],
+                icon: "💬",
+                image: "images/chati_app.png"
+            },
+            {
+                id: "quizgen",
+                title: {
+                    en: "QuizGen - AI Question Generator",
+                    ar: "كويز جين - مولد الأسئلة بالذكاء الاصطناعي"
+                },
+                client: {
+                    en: "Educational Project",
+                    ar: "مشروع تعليمي"
+                },
+                description: {
+                    en: "Revolutionary AI-powered application that converts PDF documents into intelligent quiz questions for educators.",
+                    ar: "تطبيق ثوري يعمل بالذكاء الاصطناعي لتحويل مستندات PDF إلى أسئلة اختبارية ذكية للمعلمين."
+                },
+                problem: {
+                    en: "Manual question creation process is time-consuming and requires significant effort from educators.",
+                    ar: "عملية إنشاء الأسئلة يدوياً تستغرق وقتاً طويلاً وتتطلب جهداً كبيراً من المعلمين."
+                },
+                solution: {
+                    en: "AI-powered system that automatically generates diverse quiz questions from PDF content with difficulty classification.",
+                    ar: "نظام ذكي يولد تلقائياً أسئلة اختبارية متنوعة من محتوى PDF مع تصنيف الصعوبة."
+                },
+                features: {
+                    en: [
+                        "PDF upload and text processing",
+                        "AI-powered question generation using advanced algorithms",
+                        "Multiple choice questions with automatic grading",
+                        "Question difficulty classification and categorization",
+                        "Performance statistics and detailed reports",
+                        "Export functionality for reuse and sharing"
+                    ],
+                    ar: [
+                        "تحميل PDF ومعالجة النصوص",
+                        "توليد الأسئلة بالذكاء الاصطناعي باستخدام خوارزميات متقدمة",
+                        "أسئلة متعددة الاختيارات مع تصحيح تلقائي",
+                        "تصنيف الأسئلة حسب الصعوبة والفئة",
+                        "إحصائيات الأداء وتقارير مفصلة",
+                        "وظيفة التصدير لإعادة الاستخدام والمشاركة"
+                    ]
+                },
+                technologies: ["Flutter", "Dart", "GetX", "AI API", "PDF Processing", "Firebase"],
+                icon: "🧠",
+                image: "images/quiezGen_app.png"
+            }
+        ];
+
+        // Language Management
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-en]').forEach(element => {
+                const translation = element.getAttribute(`data-${lang}`);
+                if (translation) {
+                    element.textContent = translation;
+                }
+            });
+
+            // Regenerate projects with new language
+            generateProjects();
+
+            // Save language preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Project Generation
+        function generateProjects() {
+            const projectsGrid = document.getElementById('projectsGrid');
+            projectsGrid.innerHTML = '';
+
+            projects.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card fade-in';
+                projectCard.style.animationDelay = `${index * 0.1}s`;
+
+                const imageContent = project.image
+                    ? `<img src="${project.image}" alt="${project.title[currentLanguage]}" loading="lazy">`
+                    : project.icon;
+
+                projectCard.innerHTML = `
+                    <div class="project-image ${project.image ? 'has-image' : ''}">${imageContent}</div>
+                    <div class="project-content">
+                        <h3 class="project-title">${project.title[currentLanguage]}</h3>
+                        <p class="project-client">${project.client[currentLanguage]}</p>
+                        <p class="project-description">${project.description[currentLanguage]}</p>
+                        <div class="project-tech">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                        <a href="#" class="view-details-btn" onclick="openProjectModal('${project.id}')">
+                            <span data-en="View Details" data-ar="عرض التفاصيل">${currentLanguage === 'en' ? 'View Details' : 'عرض التفاصيل'}</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                `;
+
+                projectsGrid.appendChild(projectCard);
+            });
+        }
+
+        // Modal Management
+        function openProjectModal(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const modal = document.getElementById('projectModal');
+
+            // Populate modal content
+            const modalImage = document.getElementById('modalImage');
+            if (project.image) {
+                modalImage.innerHTML = `<img src="${project.image}" alt="${project.title[currentLanguage]}" loading="lazy">`;
+                modalImage.classList.add('has-image');
+            } else {
+                modalImage.textContent = project.icon;
+                modalImage.classList.remove('has-image');
+            }
+
+            document.getElementById('modalTitle').textContent = project.title[currentLanguage];
+            document.getElementById('modalClient').textContent = project.client[currentLanguage];
+            document.getElementById('modalProblem').textContent = project.problem[currentLanguage];
+            document.getElementById('modalSolution').textContent = project.solution[currentLanguage];
+            document.getElementById('modalOverview').textContent = project.description[currentLanguage];
+
+            // Populate features
+            const featuresList = document.getElementById('modalFeatures');
+            featuresList.innerHTML = '';
+            project.features[currentLanguage].forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresList.appendChild(li);
+            });
+
+            // Populate technologies
+            const techTags = document.getElementById('modalTech');
+            techTags.innerHTML = '';
+            project.technologies.forEach(tech => {
+                const tag = document.createElement('span');
+                tag.className = 'modal-tech-tag';
+                tag.textContent = tech;
+                techTags.appendChild(tag);
+            });
+
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Smooth Scrolling
+        function smoothScroll(target) {
+            const element = document.querySelector(target);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Scroll Animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            const windowHeight = window.innerHeight;
+
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Navigation Active State
+        function updateActiveNavigation() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize language
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            switchLanguage(savedLanguage);
+
+            // Generate projects
+            generateProjects();
+
+            // Language switcher
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    switchLanguage(btn.dataset.lang);
+                });
+            });
+
+            // Navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = link.getAttribute('href');
+                    smoothScroll(target);
+                });
+            });
+
+            // Hero button
+            document.querySelector('.hero-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                smoothScroll('#projects');
+            });
+
+            // Modal close
+            document.querySelector('.modal-close').addEventListener('click', closeProjectModal);
+
+            // Modal backdrop close
+            document.getElementById('projectModal').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    closeProjectModal();
+                }
+            });
+
+            // Scroll events
+            window.addEventListener('scroll', () => {
+                handleScrollAnimations();
+                updateActiveNavigation();
+            });
+
+            // Initial scroll animation check
+            handleScrollAnimations();
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeProjectModal();
+                }
+            });
+        });
+
+        // Global function for onclick handlers
+        window.openProjectModal = openProjectModal;
+    </script>
+</body>
+
+</html>
